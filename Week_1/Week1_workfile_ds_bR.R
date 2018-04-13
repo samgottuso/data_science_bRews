@@ -60,7 +60,6 @@ sw_height+sw_theme
 
 #Step 1-- do a basic transformation
 
-
 #Step 2-- set up graph
 
 #Step 3-- apply our themes

@@ -39,7 +39,7 @@ aca_enrollment_graphing$abbreviation<-abbrevs
 data('fifty_states')
 
 
-#First graph -- nice by static
+#First graph -- nice but static
 ggplot(aca_enrollment_graphing,aes(map_id = aca_enrollment_graphing$Location))+geom_map(aes(fill=Marketplace_type),map = fifty_states,color='black')+
   expand_limits(x=fifty_states$long,y=fifty_states$lat)+
   theme_classic()+
