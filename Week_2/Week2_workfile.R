@@ -30,24 +30,62 @@ IPA_reviews_agg<- IPA_reviews %>%
   group_by(beer_beerid)%>%
   mutate(avg_review=mean(review_overall))%>%
   mutate(num_review=length(review_overall)) %>%
-  ungroup() 
+  ungroup()%>%
+  mutate(beer_beerid=as.integer(beer_beerid))
   #so now we've added our average and number of reviews for each beer, but we still have every single beer review
 
-IPA_reviews_agg<-IPA_reviews_agg[unique(IPA_reviews_agg$beer_beerid),]
-
-
-##^^This isn't working, might need to ensure all of the beer id values are consistent
+IPA_reviews_agg_unique<-distinct(IPA_reviews_agg,beer_beerid,.keep_all=TRUE)
 
 
 #Woohoo, now we have just 1 row for each of the unique beers in our data
 
 #drop columns we don't care about we could create a list of all the ones we want to keep, or just those we want to drop
 
-IPA_reviews_agg<-select(IPA_reviews_agg,-(review_time:review_profilename))
+IPA_reviews_agg_unique<-select(IPA_reviews_agg_unique,-(review_time:review_profilename))
 
 #and just a couple more
 
-IPA_reviews_agg<-select(IPA_reviews_agg,-(review_palate:review_taste))
+IPA_reviews_agg_unique<-select(IPA_reviews_agg_unique,-(review_palate:review_taste))
 
+#Let's do some exploratory data analysis on our remaining data
+
+summary(IPA_reviews_agg_unique)
+
+#What # of beers have the name of "IPA" (real creative guys)
+
+#What brewery had the most American IPAs on the list
+
+#Another visualization practice
+library(ggplot2)
+
+#let's look at abv and reviews, but only for beers that have more than 2 reviews
+
+abv_viz_data<-filter(IPA_reviews_agg_unique,num_review>2)
+
+ratings_abv<-ggplot(abv_viz_data,aes(x=beer_abv,y=avg_review))+geom_point()
+
+ratings_abv
+
+#Is there any kind of linear relationship between them?
+
+ratings_abv+geom_smooth(method = 'lm')
+
+#Eh kinda. What do the coefficients look like?
+
+ratings_abv_model<-lm(avg_review~beer_abv,data = abv_viz_data)
+
+ratings_abv_model$coefficients
+
+
+
+#Nice so let's do the same thing with a different type of beer
+
+#what are the types of beers we can choose from?
+
+b_types<-unique(beer_reviews$beer_style)
+
+#from the first 50
+
+b_types[1:51]
 
 
