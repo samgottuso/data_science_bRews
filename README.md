@@ -18,3 +18,13 @@ Due to some last minute cancels, Ben and I just worked on mapping out some ACA d
 - Gather and Spread -- uses in data and visualizations.
 
 Midweek exercises if you want to review/want some more visualization practice: [Chapter 3 of R for Data Science](http://r4ds.had.co.nz/data-visualisation.html)
+
+### Week 2 itinerary
+
+-New dataset--- Beers!
+-Learn how to import simple datafiles (.csvs)
+-Look at ways to change data we are working with, filtering, selecting columns, creating groups, etc.
+-More visualization practice
+
+Pulling mainly from [Chapter 5 of R for Data Science]
+(http://r4ds.had.co.nz/transform.html)
