@@ -26,5 +26,4 @@ Midweek exercises if you want to review/want some more visualization practice: [
 - Look at ways to change data we are working with, filtering, selecting columns, creating groups, etc.
 - More visualization practice
 
-Pulling mainly from [Chapter 5 of R for Data Science]
-(http://r4ds.had.co.nz/transform.html)
+Pulling mainly from: [Chapter 5 of R for Data Science](http://r4ds.had.co.nz/transform.html)
